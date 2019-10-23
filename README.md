@@ -2,6 +2,14 @@
 
 Núcleo de creación de rutinas para prefapp
 
+## Test
+
+```sh
+python -m unittest discover
+```
+
+
+
 ## Compilación
 
 ```sh

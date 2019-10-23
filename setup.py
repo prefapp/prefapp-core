@@ -5,8 +5,8 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
 
-        name="prefapp-core",
+        name="prefapp_core",
         version="0.0",
         author="prefapp",
-        packages=setuptools.find_packages()
+        packages=["prefapp_core"]
 )

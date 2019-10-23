@@ -1,6 +1,6 @@
-import core
+import prefapp_core
 
-from core.sh_runner import SHRunner, SHRunnerError
+from prefapp_core.sh_runner import SHRunner, SHRunnerError
 
 import unittest
 

@@ -1,7 +1,7 @@
-import core
+import prefapp_core
 
-from core.comando import Comando
-from core.tarea import Tarea
+from prefapp_core.comando import Comando
+from prefapp_core.tarea import Tarea
 
 import unittest
 
