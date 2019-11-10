@@ -8,6 +8,8 @@ import inspect
 
 from prefapp_core.comando import Comando
 
+from prefapp_core.tarea import Tarea
+
 class ErrorProcesado(Exception):
     pass
 
@@ -20,11 +22,17 @@ class Procesador:
         sys.path.insert(0, self.ruta_base)
 
 
-    def ejecutar(self, tarea):
-    
+    def ejecutar(self, tarea = None):
+ 
+        if tarea is None:
+            raise ErrorProcesado(f'Falta la tarea a ejecutar')
+
+        if not isinstance(tarea, Tarea):
+            raise ErrorProcesado(f'tarea es incorrecto. Se esperaba una instanciad de Tarea')
+
         cmd = self.__getComando(tarea)
 
-        return cmd(tarea).run()
+        return cmd(tarea, self).run()
 
 
     def __getComando(self, tarea):

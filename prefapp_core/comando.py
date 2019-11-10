@@ -1,7 +1,15 @@
+
+from prefapp_core.tarea import Tarea
+
 class Comando:
-    def __init__(self, tarea):
+    def __init__(self, tarea, refProcesador = None):
+
+        if refProcesador is None:
+            refProcesador = False
+
         self.nombre = self.__class__
         self.tarea = tarea
+        self.refProcesador = refProcesador
 
     def validar(self):
         # comprobar parametros necesarios
@@ -33,6 +41,23 @@ class Comando:
 
     def argExiste(self, k):
        return k in self.tarea.args
+
+    def subComando(self, sub, args = None):
+
+        if not self.refProcesador:
+            raise ErrorProcesado(f'El comando no se está ejecutando en un procesador. No hay habilidad para subComando')
+
+        if args is None:
+            args = {}
+
+        args["comando"] = sub
+
+        t = Tarea(args)
+
+        self.refProcesador.ejecutar(t)
+
+        return t.resultados
+
 
     def __comprobarParametrosNecesarios(self, pn):
 

@@ -33,6 +33,16 @@ class TestProcesador(unittest.TestCase):
         p.ejecutar(t)
 
         self.assertEqual(t.resultados["salida"], "HOLA")
+
+    def test_procesador_compleja(self):
+
+        p = Procesador(package_directory + "/fixtures/")
+
+        t = Tarea({ "comando": "Compleja.a", "cadena": "foo"})
+
+        p.ejecutar(t)
+
+        self.assertEqual(t.resultados["salida"], "FOO")
     
 
 
