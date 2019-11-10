@@ -21,6 +21,10 @@ class Comando:
         return True
 
     def run(self): 
+
+        # se pone el resultado a ok por defecto
+        self.resultado("estado", "OK")
+
         if self.validar():
             self.__ejecutar__()
 
@@ -31,10 +35,23 @@ class Comando:
        return k in self.tarea.args
 
     def __comprobarParametrosNecesarios(self, pn):
+
       for k in pn:
+
           if not self.argExiste(k):
-            self.error("Falta parametro " + k)
+          
+              self.error("Falta parametro " + k)
+          
+              return False
+
+      for k in pn:
+
+          if not self.__tipoCorrecto( pn[k] , self.arg(k) ):
+
+            self.error(f'El parametro {k} no es correcto. Se esperaba un {pn[k]}')
+
             return False
+
       return True
 
     def error(self, mensaje):
@@ -47,3 +64,6 @@ class Comando:
     def sh(self, cmd, args):
       pass
 
+    def __tipoCorrecto(self, tipo, valor):
+
+        return isinstance(valor, tipo)
