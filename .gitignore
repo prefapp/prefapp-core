@@ -4,6 +4,6 @@
 build/
 dist/
 prefapp_core.egg-info/
-test/__pycache__/
+test/__pycache__/*.pyc
         
         
