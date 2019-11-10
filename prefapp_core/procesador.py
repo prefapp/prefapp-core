@@ -6,6 +6,8 @@ import importlib
 
 import inspect
 
+import re
+
 from prefapp_core.comando import Comando
 
 from prefapp_core.tarea import Tarea
@@ -54,6 +56,8 @@ class Procesador:
 
         modulo = False
 
+        familia = self.__reescribirFamiliaComando( familia )
+
         try:
 
             modulo = importlib.import_module(f'{familia}.{comando}')
@@ -72,5 +76,10 @@ class Procesador:
 
             raise ErrorProcesado(f'Error en carga de comando {familia}.{comando}: {e}')
 
-    
+    def __reescribirFamiliaComando(self, familia):
+
+        if re.search('^\_\_', familia):
+
+            familia = "prefapp_core." + familia.replace("_", "")
         
+        return familia
