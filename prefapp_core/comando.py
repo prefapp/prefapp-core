@@ -35,6 +35,8 @@ class Comando:
 
         if self.validar():
             self.__ejecutar__()
+        else:
+            self.resultado("estado", "KO")
 
     def arg(self, k):
       return self.tarea.args[k]
