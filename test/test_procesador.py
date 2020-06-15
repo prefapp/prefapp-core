@@ -18,7 +18,7 @@ class TestProcesador(unittest.TestCase):
 
         p = Procesador(package_directory + "/fixtures/")
 
-        t = Tarea({ "comando": "Familia.sumar", "a": 3, "b": 3})
+        t = Tarea({ "comando": "Familia.proba", "args": "acr repository show-manifests -n situmacrprobas --output=json --orderby=time_asc"})
 
         p.ejecutar(t)
     
