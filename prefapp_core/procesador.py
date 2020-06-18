@@ -21,8 +21,17 @@ class Procesador:
         
         self.ruta_base = ruta_base
 
+        self.familias = {}
+
         sys.path.insert(0, self.ruta_base)
 
+    def cargarRuta(self, ruta):
+
+        sys.path.insert(0, ruta)
+
+    def cargarFamilia(self, alias, ruta):
+        
+        self.familias[alias] = ruta
 
     def ejecutar(self, tarea = None):
  
@@ -45,7 +54,7 @@ class Procesador:
 
         r = tarea.args["comando"]
 
-        familia = r.split(".")[0].lower()
+        familia = r.split(".")[0]#.lower()
 
         comando = r.split(".")[1].lower()
 
@@ -77,6 +86,11 @@ class Procesador:
             raise ErrorProcesado(f'Error en carga de comando {familia}.{comando}: {e}')
 
     def __reescribirFamiliaComando(self, familia):
+
+        if familia in self.familias:
+            return self.familias[familia]
+
+        familia = familia.lower()
 
         if re.search('^\_\_', familia):
 
