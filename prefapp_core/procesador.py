@@ -29,9 +29,9 @@ class Procesador:
 
         sys.path.insert(0, ruta)
 
-    def cargarFamilia(self, alias, ruta):
+    def cargarFamilia(self, alias, modulo):
         
-        self.familias[alias] = ruta
+        self.familias[alias] = modulo
 
     def ejecutar(self, tarea = None):
  
