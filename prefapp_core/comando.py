@@ -39,7 +39,7 @@ class Comando:
             self.resultado("estado", "KO")
 
     def arg(self, k):
-      return self.tarea.args[k]
+      return self.tarea.args.get(k)
 
     def argExiste(self, k):
        return k in self.tarea.args
