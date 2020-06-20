@@ -5,8 +5,12 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
 
-        name="prefapp_core-prefapp",
+        name="prefapp_core-prefapp-team",
         version="0.0",
         author="prefapp",
-        packages=["prefapp_core"]
+        packages=setuptools.find_packages(),
+        python_requires='>=3.1',
+        classifiers=[
+	    "Programming Language :: Python :: 3",
+        ]
 )
