@@ -1,7 +1,12 @@
 
+import logging
+
 from prefapp_core.tarea import Tarea
 
+from prefapp_core.log import Log, ComandoLog
+
 class Comando:
+
     def __init__(self, tarea, refProcesador = None):
 
         if refProcesador is None:
@@ -10,6 +15,7 @@ class Comando:
         self.nombre = self.__class__
         self.tarea = tarea
         self.refProcesador = refProcesador
+        self.__log = self.__iniciarLogs()
 
     def validar(self):
         # comprobar parametros necesarios
@@ -25,8 +31,14 @@ class Comando:
     def parametrosNecesarios(self):
         return False
 
+    """
+        Métodos a sobreescribir
+    """
     def __validar__(self):
         return True
+
+    def __clase_logs__(self):
+        return ComandoLog
 
     def run(self): 
 
@@ -91,6 +103,26 @@ class Comando:
     def sh(self, cmd, args):
       pass
 
+    """
+        Métodos de log
+    """
+    def lInfo(self, mensaje):
+        self.__log.log.info(mensaje)
+
+    def lError(self, mensaje):
+        self.__log.log.error(mensaje)
+
+    """ 
+        Métodos internos
+    """
+
     def __tipoCorrecto(self, tipo, valor):
 
         return isinstance(valor, tipo)
+
+    def __iniciarLogs(self):
+
+        claseLogs = self.__clase_logs__()
+
+        return claseLogs().iniciarLog()
+
