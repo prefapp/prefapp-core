@@ -1,5 +1,7 @@
 import sys
 import logging
+import json_log_formatter
+
 
 """
  Logger de comandos (clase por defecto)
@@ -47,8 +49,11 @@ class ComandoLog:
     def __salida__(self):
         return None # por defecto la salida es por pantalla
 
+    #def __formato__(self):
+    #    return logging.Formatter("%(asctime)s - %(levelname)s - %(message)s", "%Y-%m-%d %H:%M:%S")
+
     def __formato__(self):
-        return logging.Formatter("%(asctime)s - %(levelname)s - %(message)s", "%Y-%m-%d %H:%M:%S")
+        return json_log_formatter.JSONFormatter()
 
     def __nivel__(self):
         return logging.INFO
