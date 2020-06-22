@@ -23,11 +23,11 @@ class ComandoConLogs(Comando):
         return ComandoLogParaTest
 
     def __ejecutar__(self):
-        self.lInfo(f"log numero {self.arg('numero')}")
+        self.logInfo(f"log numero {self.arg('numero')}")
 
 class ComandoConLogs2(Comando):
     def __ejecutar__(self):
-        self.lInfo(f"log2 numero {self.arg('numero')}")
+        self.logInfo(f"log2 numero {self.arg('numero')}")
 
 class TestComando(unittest.TestCase):
 

@@ -106,10 +106,10 @@ class Comando:
     """
         Métodos de log
     """
-    def lInfo(self, mensaje):
+    def logInfo(self, mensaje):
         self.__log.log.info(mensaje)
 
-    def lError(self, mensaje):
+    def logError(self, mensaje):
         self.__log.log.error(mensaje)
 
     """ 
