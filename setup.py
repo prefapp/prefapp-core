@@ -12,5 +12,10 @@ setuptools.setup(
         python_requires='>=3.1',
         classifiers=[
 	    "Programming Language :: Python :: 3",
+        ],
+
+        install_requires = [
+        
+            "JSON-log-formatter>=0.3.0"
         ]
 )
