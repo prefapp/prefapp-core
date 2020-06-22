@@ -1,5 +1,6 @@
 import sys
 import re
+import os
 
 from prefapp_core.tarea import Tarea
 
@@ -12,6 +13,12 @@ class ExcepcionCli(Exception):
 class Cli:
 
     def iniciar(self):
+
+        cwd = self.__cwd__()
+
+        if cwd:
+            print(cwd)
+            os.chdir(cwd)
         
         initClase = self.__cargar_init__()
 
@@ -68,7 +75,8 @@ class Cli:
     def __cargar_init__(self):
         raise Exception(f"__cargar_init__: no está definido.")
 
-
+    def __cwd__(self):
+        return None
 
 
     
