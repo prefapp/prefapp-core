@@ -5,7 +5,7 @@ import os
 from prefapp_core.tarea import Tarea
 
 ES_COMANDO = re.compile("\w+\.\w+")
-ES_ARG = re.compile("\w+\=.+")
+ES_ARG = re.compile("[\w\-]+\=.+")
 
 class ExcepcionCli(Exception):
     pass
