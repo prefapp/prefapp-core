@@ -5,6 +5,8 @@ from prefapp_core.tarea import Tarea
 
 from prefapp_core.log import Log, ComandoLog
 
+from prefapp_core.utiles.confirmacion import confirmacionUsuario
+
 class Comando:
 
     def __init__(self, tarea, refProcesador = None):
@@ -102,6 +104,12 @@ class Comando:
 
     def sh(self, cmd, args):
       pass
+
+    """
+        Útiles para comandos
+    """
+    def utilConfirmacion(mensaje, respuestaDefecto):
+        return confirmacionUsuario(mensaje, respuestaDefecto)
 
     """
         Métodos de log
