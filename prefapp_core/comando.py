@@ -108,7 +108,7 @@ class Comando:
     """
         Útiles para comandos
     """
-    def utilConfirmacion(mensaje, respuestaDefecto):
+    def utilConfirmacion(self, mensaje, respuestaDefecto):
         return confirmacionUsuario(mensaje, respuestaDefecto)
 
     """
