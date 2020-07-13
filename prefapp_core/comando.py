@@ -114,11 +114,11 @@ class Comando:
     """
         Métodos de log
     """
-    def logInfo(self, mensaje):
-        self.__log.log.info(mensaje)
+    def logInfo(self, mensaje, extra):
+        self.__log.log.info(mensaje, extra=extra)
 
-    def logError(self, mensaje):
-        self.__log.log.error(mensaje)
+    def logError(self, mensaje, extra = {}):
+        self.__log.log.error(mensaje, extra=extra)
 
     """ 
         Métodos internos

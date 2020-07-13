@@ -53,7 +53,8 @@ class ComandoLog:
     #    return logging.Formatter("%(asctime)s - %(levelname)s - %(message)s", "%Y-%m-%d %H:%M:%S")
 
     def __formato__(self):
-        return json_log_formatter.JSONFormatter()
+        #return json_log_formatter.JSONFormatter()
+        return JSONFormatCustom()
 
     def __nivel__(self):
         return logging.INFO
@@ -96,4 +97,18 @@ class Log:
     def __formatoDefecto(self):
 
         return logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+
+
+"""
+  Logger para json por campos
+
+"""
+class JSONFormatCustom(json_log_formatter.JSONFormatter):
+    def json_record(self, message = "", extra = {}, record = logging.LogRecord) -> dict:
+
+
+        extra["message"] = message
+
+        return extra
 
