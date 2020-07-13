@@ -23,7 +23,7 @@ class ComandoConLogs(Comando):
         return ComandoLogParaTest
 
     def __ejecutar__(self):
-        self.logInfo(f"log numero {self.arg('numero')}")
+        self.logInfo(f"log numero {self.arg('numero')}", {"a" : 1})
 
 class ComandoConLogs2(Comando):
     def __ejecutar__(self):
