@@ -4,6 +4,8 @@ import os
 
 from prefapp_core.tarea import Tarea
 
+from prefapp_core.utiles.cli_args import CliArgs
+
 ES_COMANDO = re.compile("\w+\.\w+")
 ES_ARG = re.compile("[\w\-]+\=.+")
 
@@ -54,13 +56,14 @@ class Cli:
 
     def __getArgs(self):
 
-        args = {}
+        args = CliArgs()
 
         for arg in sys.argv[2:]:
             if ES_ARG.match(arg):
-                args[arg.split("=")[0]] = arg.split("=")[1]
+                args.tratarArg(arg.split("=")[0], arg.split("=")[1])
+ #               args[arg.split("=")[0]] = arg.split("=")[1]
 
-        return args
+        return argr.getArgs()
 
     def __runComando(self, comando, args):
 
