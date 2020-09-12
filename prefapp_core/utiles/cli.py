@@ -63,7 +63,7 @@ class Cli:
                 args.tratarArg(arg.split("=")[0], arg.split("=")[1])
  #               args[arg.split("=")[0]] = arg.split("=")[1]
 
-        return argr.getArgs()
+        return args.getArgs()
 
     def __runComando(self, comando, args):
 
