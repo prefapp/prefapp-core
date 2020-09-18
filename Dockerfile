@@ -1,11 +1,15 @@
+FROM python AS BUILD
+
+WORKDIR /prefapp-core
+
+COPY . .
+
+RUN python setup.py bdist_wheel
+
 FROM python
 
-WORKDIR /opt/build
+WORKDIR /prefapp-core
 
-ADD requirements.txt .
+COPY --from=BUILD /prefapp-core/dist .
 
-RUN pip install -r requirements.txt
-
-
-#RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
-
+RUN pip3 install *.whl

@@ -1,0 +1,6 @@
+test
+__pycache_
+*.egg*
+dist
+build
+dockerfile
