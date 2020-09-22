@@ -22,7 +22,7 @@ class SHRunner:
             (salida, error) = pipe.communicate()
 
             if salida:
-                return str(salida)
+                return salida.decode("utf-8")
             if error:
                 raise SHRunnerError("Error (" + str(pipe.returncode) + ") " + str(error.strip()))
         except OSError as e:
