@@ -21,6 +21,11 @@ class SHRunner:
 
             (salida, error) = pipe.communicate()
 
+            print(f'Ejecutando {call} -> salida {pipe.returncode}')
+
+            if pipe.returncode != 0:
+                raise SHRunnerError("Error (" + str(pipe.returncode) + ") " + str(error.strip()))
+
             if salida:
                 return salida.decode("utf-8")
             if error:
