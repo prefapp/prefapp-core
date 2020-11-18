@@ -7,5 +7,5 @@ class Test1(Comando):
     def __validar__(self):
         return True
     def __ejecutar__(self):
-        self.resultado("original_path", self.PATH_ORIGINAL())
+        self.resultado("original_path", self.PATH_ORIGINAL)
  

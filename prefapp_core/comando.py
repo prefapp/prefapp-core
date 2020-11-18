@@ -57,6 +57,7 @@ class Comando:
         else:
             self.resultado("estado", "KO")
 
+    @property
     def PATH_ORIGINAL(self):
       return self.arg("__original_cwd__")
 
