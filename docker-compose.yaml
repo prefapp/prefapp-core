@@ -5,8 +5,11 @@ services:
     build:
       context: .
     image: prefapp-core:latest
+    working_dir: /home/app
     entrypoint:
     - bash
     - -c
     command:
-    - "python -m unnitest discover test/"
+    - "python -m unittest discover test/"
+    volumes:
+    - '.:/home/app'
