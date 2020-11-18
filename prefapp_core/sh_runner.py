@@ -8,41 +8,37 @@ class SHRunnerError(Exception):
 
 class SHRunner:
 
-    SSH_RUNNER_DEBUG = False
-    SSH_RUNNER_MOCK = None
+    SH_RUNNER_DEBUG = False
+    SH_RUNNER_MOCK = None
 
     @classmethod
     def DEBUG_ON(self, fn):
-      SHRunner.SSH_RUNNER_DEBUG = fn
+        SHRunner.SH_RUNNER_DEBUG = fn
 
     @classmethod
     def DEBUG_OFF(self, debug):
-      SHRunner.SSH_RUNNER_DEBUG = False
+        SHRunner.SH_RUNNER_DEBUG = False
 
     @classmethod
     def MOCK(self, mock = None):
-      SHRunner.SSH_RUNNER_MOCK = mock
+        SHRunner.SH_RUNNER_MOCK = mock
 
     def __init__(self, cmd, args):
         self.cmd = cmd
         self.args = args
 
     def run(self, esperar = False):
-        
+
         call = [self.cmd] + self.args
 
-        debug = SHRunner.SSH_RUNNER_DEBUG
-        mock = SHRunner.SSH_RUNNER_MOCK
+        debug = SHRunner.SH_RUNNER_DEBUG
+        mock = SHRunner.SH_RUNNER_MOCK
 
         if debug is not False:
-          debug(self.cmd, self.args)
-          if mock is not None:
-            return mock()
-          else:
-            return ""
+            debug(self.cmd, self.args)
 
         if mock is not None:
-          return mock()
+            return mock()
 
         try:
             pipe = subprocess.Popen(call, 
@@ -64,7 +60,7 @@ class SHRunner:
             raise SHRunnerError("Error " + e.strerror + "(" + e.errno + ")")
         except:
             raise SHRunnerError("Error "+  str(sys.exc_info()[0]))
-            
 
 
-            
+
+
