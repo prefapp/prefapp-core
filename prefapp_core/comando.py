@@ -7,6 +7,9 @@ from prefapp_core.log import Log, ComandoLog
 
 from prefapp_core.utiles.confirmacion import confirmacionUsuario
 
+from prefapp_core.alijo import Alijo
+
+
 class Comando:
 
     def __init__(self, tarea, refProcesador = None):
@@ -18,6 +21,8 @@ class Comando:
         self.tarea = tarea
         self.refProcesador = refProcesador
         self.__log = self.__iniciarLogs()
+
+        self.__alijo = Alijo()
 
     def validar(self):
         # comprobar parametros necesarios
@@ -57,6 +62,13 @@ class Comando:
 
     def argExiste(self, k):
        return k in self.tarea.args
+
+    def a(self, *args):
+      if len(args) == 1:
+        return self.__alijo.get(args[0])
+      else:
+        return self.__alijo.set(args[0], args[1])
+
 
     def subComando(self, sub, args = None):
 
