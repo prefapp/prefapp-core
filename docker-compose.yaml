@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  test:
+    build:
+      context: .
+    image: prefapp-core:latest
+    entrypoint:
+    - bash
+    - -c
+    command:
+    - "python -m unnitest discover test/"
