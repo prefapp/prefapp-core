@@ -9,6 +9,8 @@ services:
     entrypoint:
     - bash
     - -c
+    environment:
+      PYTHONPATH: "/home/app"
     command:
     - "python -m unittest discover test/"
     volumes:

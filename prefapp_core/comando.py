@@ -57,6 +57,10 @@ class Comando:
         else:
             self.resultado("estado", "KO")
 
+    @property
+    def PATH_ORIGINAL(self):
+      return self.arg("__original_cwd__")
+
     def arg(self, k):
       return self.tarea.args.get(k)
 

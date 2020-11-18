@@ -16,10 +16,11 @@ class Cli:
 
     def iniciar(self):
 
+        self.original_cwd = os.getcwd()
+
         cwd = self.__cwd__()
 
         if cwd:
-            print(cwd)
             os.chdir(cwd)
         
         initClase = self.__cargar_init__()
@@ -68,6 +69,8 @@ class Cli:
     def __runComando(self, comando, args):
 
         args["comando"] = comando
+
+        args["__original_cwd__"] = self.original_cwd
 
         t = Tarea(args)
 
