@@ -43,6 +43,16 @@ class TestProcesador(unittest.TestCase):
         p.ejecutar(t)
 
         self.assertEqual(t.resultados["salida"], "FOO")
+
+    def test_procesador_proba_alberto(self):
+
+        p = Procesador(package_directory + "/fixtures/")
+
+        t = Tarea({ "comando": "Cmdberto.power", "base": 5, "exp": 3})
+
+        p.ejecutar(t)
+
+        self.assertEqual(t.resultados["powered"], 125)
     
 
 
