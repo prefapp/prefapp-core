@@ -1,0 +1,16 @@
+name: Pull Request Verify
+
+on:
+  pull_request:
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+        
+
+
