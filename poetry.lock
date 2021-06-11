@@ -1,0 +1,17 @@
+[[package]]
+name = "json-log-formatter"
+version = "0.3.1"
+description = "JSON log formatter"
+category = "main"
+optional = false
+python-versions = "*"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.8"
+content-hash = "2412a7ebd5bc80893baa05e917243659bdcd67fece9ae7b3c0f2307b530493a2"
+
+[metadata.files]
+json-log-formatter = [
+    {file = "JSON-log-formatter-0.3.1.tar.gz", hash = "sha256:03029bddba697d2f6c81419a80f1c58d3a89ae715336c6a88b370e7d2c983198"},
+]

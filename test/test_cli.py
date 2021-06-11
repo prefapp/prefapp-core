@@ -2,6 +2,8 @@ import prefapp_core
 
 import unittest
 
+import pathlib
+
 import os
 
 from prefapp_core.sh_runner import SHRunner
@@ -14,7 +16,9 @@ class TestCli(unittest.TestCase):
 
     os.chdir("/tmp")
 
-    run = SHRunner("python", ["/home/app/test/fixtures/cli/cli.py", "a.a"])
+    path = os.path.dirname(pathlib.Path(__file__).parent.absolute())
+
+    run = SHRunner("python", [path + "/test/fixtures/cli/cli.py", "a.a"])
 
     salida = run.run()
 
