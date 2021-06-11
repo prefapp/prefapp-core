@@ -12,13 +12,15 @@ import re
 
 class TestCli(unittest.TestCase):
 
-  def testOriginalPatnh(self):
+  def testOriginalPath(self):
 
     os.chdir("/tmp")
 
     path = os.path.dirname(pathlib.Path(__file__).parent.absolute())
+    
+    os.environ['PYTHONPATH'] = path 
 
-    run = SHRunner("python", [path + "/test/fixtures/cli/cli.py", "a.a"])
+    run = SHRunner("python3", [path + "/test/fixtures/cli/cli.py", "a.a"])
 
     salida = run.run()
 
