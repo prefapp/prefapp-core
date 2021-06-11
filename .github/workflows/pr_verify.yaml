@@ -2,7 +2,7 @@ name: Pull Request Verify
 
 on:
   pull_request:
-
+  workflow_dispatch:
 jobs:
   pipeline:
     runs-on: ubuntu-latest
