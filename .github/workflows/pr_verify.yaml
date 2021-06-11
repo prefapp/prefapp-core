@@ -13,6 +13,9 @@ jobs:
           python-version: 3.8
       - uses: Gr1N/setup-poetry@v4
       - run: poetry install
+        name: install project dependencies
+      - run: poetry run python -m unittest discover
+        name: passing unittests
 
         
 
