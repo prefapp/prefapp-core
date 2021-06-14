@@ -1,0 +1,37 @@
+name: Tag and release
+on:
+  workflow_dispatch:
+env:
+  repo_git_user: 'github-actions'
+  repo_git_mail: 'github-actions@github.com'
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Install Poetry
+        uses: snok/install-poetry@v1.1.6
+      
+      - name: Get poetry version
+        id: poetry_ver
+        run: |
+                VERSION=$( poetry version | cut -d ' ' -f 2 )
+                echo "::set-output name=VERSION::$VERSION"
+                echo $VERSION
+                
+      - name: Create Git Tag
+        run: |
+          VERSION=${{ steps.poetry_ver.outputs.VERSION }}
+          git config user.name  ${{ env.repo_git_user }}
+          git config user.email ${{ env.repo_git_mail }}
+          git tag ${VERSION}
+          git push origin ${VERSION}
+          
+      - name: Create Github Release
+        uses: ncipollo/release-action@v1
+        with:
+          name: ${{ steps.poetry_ver.outputs.VERSION }}
+          tag: ${{ steps.poetry_ver.outputs.VERSION }}
+          token: ${{ secrets.GITHUB_TOKEN }}
