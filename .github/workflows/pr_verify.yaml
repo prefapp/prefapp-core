@@ -1,0 +1,22 @@
+name: Pull Request Verify
+
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - uses: Gr1N/setup-poetry@v4
+      - run: poetry install
+        name: install project dependencies
+      - run: poetry run python -m unittest discover
+        name: passing unittests
+
+        
+
+
