@@ -1,6 +1,12 @@
 name: Tag and release
 on:
   workflow_dispatch:
+    inputs:
+      release_commit:
+        description: 'FULL commit sha of the release (optional)'     
+        required: false
+        default: ''
+
 env:
   repo_git_user: 'github-actions'
   repo_git_mail: 'github-actions@github.com'
@@ -9,7 +15,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Determine commit
+        id: commit
+        run: |
+          if [ "${{ github.event.inputs.release_commit }}" != "" ]; then
+          echo "::set-output name=COMMIT::${{ github.event.inputs.release_commit }}"
+          else
+          echo "::set-output name=COMMIT::${{ env.GITHUB_SHA }}"
+          fi
+      
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ steps.commit.outputs.COMMIT }}
       
       - name: Install Poetry
         uses: snok/install-poetry@v1.1.6
